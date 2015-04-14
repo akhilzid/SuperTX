@@ -3,7 +3,7 @@
 Currently working with FLYSKY CT6B + arduino Mega + SSD1306 Based IIC / I2C OLED (128x64 Pixels)
 
 Done:
-Now trim works through software(actual ct6b can only trimmed mechanically before) in other radios .
+Now trim works through software(actual ct6b can only trimmed mechanically before) like other radios .
 End points can be adjust through menu.
 Can assign any channel to any stick via menu.
 Can reverse channels via menu.
