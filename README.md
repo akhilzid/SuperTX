@@ -14,36 +14,35 @@ Works fine with 2S - 3S LiPo (6V- 13V)
 
 
 Pin Assignments Below
+SWAPin A14
+SWBPin A15
 
-#define SWAPin A14
-#define SWBPin A15
+define LEDG 45
+LEDR 44
 
-#define LEDG 45
-#define LEDR 44
-
-#define BATT A0 // Please dont try to connect directly to battery, Need Voltage Divider To Connect Battery.
+BATT A0 // Please dont try to connect directly to battery, Need Voltage Divider To Connect Battery.
 
 //Analog pins without Prefix "A"
-#define Ail 8
-#define Ele 9
-#define Thr 10
-#define Rud 11
-#define VRA 12
-#define VRB 13
+Ail 8
+Ele 9
+Thr 10
+Rud 11
+VRA 12
+VRB 13
 
 // Push Switches For Menu/additional operations
-#define PUSHSW1  32
-#define PUSHSW2  33
+PUSHSW1  32
+PUSHSW2  33
 
 //PPM Output Pin to TX Module
-#define PPMPin 2
+PPMPin 2
 
 // Digital Pins Trim Switches
-#define EleTR0  5
-#define EleTR1  6
-#define AilTR0  7
-#define AilTR1  8
-#define ThrTR0  9
-#define ThrTR1  10
-#define RudTR0  11
-#define RudTR1  12
+EleTR0  5
+EleTR1  6
+AilTR0  7
+AilTR1  8
+ThrTR0  9
+ThrTR1  10
+RudTR0  11
+RudTR1  12
