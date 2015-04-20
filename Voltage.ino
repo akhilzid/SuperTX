@@ -1,8 +1,8 @@
 void Batt(){
-  total = total - readings[readIndex];
+  total -= ( readings[readIndex] );
   readings[readIndex] = (float)analogRead(BATT)* 5.0 / (float)VoltageDiv;
-  total = total + readings[readIndex];
-  readIndex = readIndex + 1;
+  total += readings[readIndex];
+  readIndex += 1;
   if (readIndex >= numReadings)readIndex = 0;
   average = total / numReadings;
 }

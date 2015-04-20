@@ -73,23 +73,23 @@ void CheckCalibMode() {
   {
     {
       for (int i = 0; i < (CHANNELS - 2); i++) {
-        StickMin[i] = StickMid[i] = StickMax[i] = 500;
+        StickMin[i] = StickMid[i] = StickMax[i] = 0;
       }
     };
-    while (!digitalRead(PUSHSW1) && !digitalRead(PUSHSW2))// (analogRead(VRB) > 950) && (analogRead(VRA) > 950)
+    while (SWB == MODE_TWO && SWA == MODE_ONE)// (analogRead(VRB) > 950) && (analogRead(VRA) > 950)
     {
       CalibVals();
       for (int i = 0; i < (CHANNELS); i++) {
-        if (analogRead(PIN[i]) > StickMax[i]) {
-          StickMax[i] = analogRead(PIN[i]);
+        if (AnalogRead(PIN[i]) > StickMax[i]) {
+          StickMax[i] = AnalogRead(PIN[i]);
         }
-        if (analogRead(PIN[i]) < StickMin[i]) {
-          StickMin[i] = analogRead(PIN[i]);
+        if (AnalogRead(PIN[i]) < StickMin[i]) {
+          StickMin[i] = AnalogRead(PIN[i]);
         }
       }
     };
     for (int i = 0; i < (CHANNELS); i++) {
-      StickMid[i] = analogRead(PIN[i]);
+      StickMid[i] = AnalogRead(PIN[i]);
     }
     setData();
   };

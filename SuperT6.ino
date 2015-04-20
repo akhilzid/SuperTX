@@ -17,8 +17,11 @@ void setup() {
   setTimer();
   CheckCalibMode();
   StickVal[6] = 1000;
-  for (int thisReading = 0; thisReading < numReadings; thisReading++)
-    readings[thisReading] = 0;
+  for (int thisReading = 0; thisReading < numReadings; thisReading++){
+    float v = (float)analogRead(BATT)* 5.0 / (float)VoltageDiv;
+    readings[thisReading] = v;
+    total +=v;
+  }
   FSmsg(45, 40, "Done");
 }
 
@@ -28,7 +31,7 @@ void loop() {
   Switch();
   SwitchCalc();
   NewTime1 = millis();
-  if (NewTime1 - PrevTime1 >= 400UL) {
+  if (NewTime1 - PrevTime1 >= 100UL) {
     PrevTime1 = NewTime1;
     Batt();
   }
@@ -44,23 +47,22 @@ void loop() {
   if (UPDATEPPM) {
     for (int i = 0; i < CHANNELS; i++) {
 
-      if (CH[i] == 0 || CH[i] == 1 || CH[i] == 3) {
-        if (StickVal[CH[i]] < 500)
-        {
-          if (CH_Reversed[i] == 0) ppm[i] = 1000 + map(StickVal[CH[i]], CH_EMIN[CH[i]], 500  , CH_EMIN[CH[i]],StickTRIM[CH[i]]);
-          else ppm[i] = 2000 - map(StickVal[CH[i]], CH_EMIN[CH[i]], 500  , CH_EMIN[CH[i]],StickTRIM[CH[i]]);
-        }
-        else if (StickVal[CH[i]] > 500)
-        {
-          if (CH_Reversed[i] == 0) ppm[i] = 1000 + map(StickVal[CH[i]], 500,  CH_EMAX[CH[i]], StickTRIM[CH[i]], CH_EMAX[CH[i]]);
-          else ppm[i] = 2000 - map(StickVal[CH[i]], 500,  CH_EMAX[CH[i]], StickTRIM[CH[i]], CH_EMAX[CH[i]]);
-        }
-        else  ppm[i] = 1000 + StickTRIM[CH[i]];
+     if (CH[i] == 0 || CH[i] == 1 || CH[i] == 3) //For channels Ail, Ele, Rud
+     {
+        int ppm_ep = (StickVal[CH[i]] <= 0)? CH_EMIN[CH[i]] : CH_EMAX[CH[i]];
+        int ppm_temp = map(StickVal[CH[i]], ppm_ep , 0 , ppm_ep , StickTRIM[CH[i]]);
+  
+        ppm[i] = 1500 + ((CH_Reversed[i] == 0)? (+ppm_temp): (-ppm_temp));
       }
-      else
-      { if (CH_Reversed[i] == 0) ppm[i] = 1000 + StickVal[CH[i]];
-        else ppm[i] = 2000 - StickVal[CH[i]];
+      else                                      //For all other linear channels like throttle and VR
+      { 
+        ppm[i] = 1500 + ((CH_Reversed[i] == 0)? (+StickVal[CH[i]]): (-StickVal[CH[i]]));
       }
     }
   }
+}
+
+int AnalogRead(int i)
+{
+return map(analogRead(i), 0, 1023 , -500 , 500);
 }

@@ -70,7 +70,7 @@ void Screen() {
     u8g.drawPixel(map( 500, 350 , 650, 5, 40), 52);
     u8g.drawPixel(map( StickTRIM[3], 350 , 650, 5, 40), 54);
     u8g.drawPixel(map( StickTRIM[3], 350 , 650, 5, 40), 55);
-    u8g.drawCircle(map( StickVal[3], 0 , 1000, 5, 40), map( StickVal[2], 0 , 1000, 53, 18), 2);
+    u8g.drawCircle(map( StickVal[3], -500 , 500, 5, 40), map( StickVal[2], -500 , 500, 53, 18), 2);
     
     u8g.drawFrame(89, 17, 37, 37); // Right Stick
     u8g.drawFrame(86, 17, 4, 37);
@@ -79,7 +79,7 @@ void Screen() {
     u8g.drawPixel(map( 500, 350 , 650, 90, 125), 52);
     u8g.drawPixel(map( StickTRIM[0], 350 , 650, 90, 125), 54);
     u8g.drawPixel(map( StickTRIM[0], 350 , 650, 90, 125), 55);
-    u8g.drawCircle(map( StickVal[0], 0 , 1000, 90, 125),  map( StickVal[1], 0 , 1000, 53, 18), 2);
+    u8g.drawCircle(map( StickVal[0], -500 , 500, 90, 125),  map( StickVal[1], -500 , 500, 53, 18), 2);
 
   } while ( u8g.nextPage() );
 };

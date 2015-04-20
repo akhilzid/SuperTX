@@ -4,14 +4,14 @@ void StickCalc() {
       case 0:
       case 1:
       case 3:
-        if (analogRead(PIN[i]) < (StickMid[i] - Deadband)) StickVal[i] =  map(analogRead(PIN[i]), StickMin[i], StickMid[i] - Deadband, 0, 500);
-        else if (analogRead(PIN[i]) > StickMid[i] + Deadband) StickVal[i] =  map(analogRead(PIN[i]), StickMid[i] + Deadband, StickMax[i], 500, 1000);
-        else StickVal[i] = 500;
+        if (AnalogRead(PIN[i]) < (StickMid[i] - Deadband)) StickVal[i] =  map(AnalogRead(PIN[i]), StickMin[i], StickMid[i] - Deadband, -500, 0);
+        else if (AnalogRead(PIN[i]) > StickMid[i] + Deadband) StickVal[i] =  map(AnalogRead(PIN[i]), StickMid[i] + Deadband, StickMax[i], 0, 500);
+        else StickVal[i] = 0;
         break;
       case 2:
       case 4:
       case 5:
-        StickVal[i] =  constrain(map(analogRead(PIN[i]), StickMin[i], StickMax[i], 0 , 1000),0,1000);
+        StickVal[i] =  constrain(map(AnalogRead(PIN[i]), StickMin[i], StickMax[i], -500 , 500),-500,500);
         break;
     }
      //Serial.print(String( StickVal[i]) + "\t");
@@ -49,21 +49,21 @@ void SwitchPos() {
 void SwitchCalc() {
   switch (SWA) {
     case MODE_ONE :
-      StickVal[6] = 0;
+      StickVal[6] = -500;
       break;
     case MODE_TWO :
-      StickVal[6] = 300;
+      StickVal[6] = -200;
       break;
     case MODE_THREE :
       switch (SWB) {
         case MODE_ONE :
-          StickVal[6] = 410;
+          StickVal[6] = -90;
           break;
         case MODE_TWO :
-          StickVal[6] = 550;
+          StickVal[6] = 50;
           break;
         case MODE_THREE :
-          StickVal[6] = 1000;
+          StickVal[6] = 500;
           break;
       }
       break;

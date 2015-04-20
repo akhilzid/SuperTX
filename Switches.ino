@@ -12,17 +12,17 @@ void Switch() {
 int Pause;
 void SWStep(void) {
   uiKeyCodeSecond = uiKeyCodeFirst;
-  if ( StickVal[1] > 600 )
+  if ( StickVal[1] > 100 )
     uiKeyCodeFirst = KEY_PREV;
-  else if ( StickVal[1] < 400 )
+  else if ( StickVal[1] < -100 )
     uiKeyCodeFirst = KEY_NEXT;
-  else if (StickVal[0] > 600 )
+  else if (StickVal[0] > 100 )
     uiKeyCodeFirst = KEY_SELECT;
-  else if (StickVal[0] < 400 )
+  else if (StickVal[0] < -100 )
     uiKeyCodeFirst = KEY_BACK;
-  else if (StickVal[3] > 600 )
+  else if (StickVal[3] > 100 )
     uiKeyCodeFirst = KEY_INC;
-  else if (StickVal[3] < 400 )
+  else if (StickVal[3] < -100 )
     uiKeyCodeFirst = KEY_DEC;
   else
     uiKeyCodeFirst = KEY_NONE;
@@ -72,13 +72,13 @@ void Trim() {
     {
       if (i < 4) {
         StickTRIM[i]-- ;
-         StickTRIM[i] = constrain(StickTRIM[i], 350, 650);
+         StickTRIM[i] = constrain(StickTRIM[i], -150, 150);
         eeprom_write_int(CHANNELS * 10 + i + 1,  StickTRIM[i]);
         //Serial.println(String(i) + "\t");
       }
       else if (i >= 4) {
         StickTRIM[i-4]++ ;
-        StickTRIM[i-4] = constrain(StickTRIM[i-4], 350, 650);
+        StickTRIM[i-4] = constrain(StickTRIM[i-4], -150, 150);
         eeprom_write_int(CHANNELS * 10 + i - 4 + 1, StickTRIM[i-4]);
         //Serial.println(String(i) + "\t");
       }

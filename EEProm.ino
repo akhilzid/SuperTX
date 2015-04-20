@@ -27,9 +27,9 @@ void setData()
   for (int i = 0; i < CHANNELS; i++) {
     eeprom_write_int(CHANNELS * 2 + i + 1, CH[i]);
     eeprom_write_int(CHANNELS * 3 + i + 1, constrain(CH_Reversed[i], 0,1));
-    eeprom_write_int(CHANNELS * 6 + i + 1, constrain(StickMin[i],0,200));
-    eeprom_write_int(CHANNELS * 7 + i + 1, constrain(StickMid[i],400,600));
-    eeprom_write_int(CHANNELS * 8 + i + 1, constrain(StickMax[i],800,1000));
+    eeprom_write_int(CHANNELS * 6 + i + 1, constrain(StickMin[i],-500,-300));
+    eeprom_write_int(CHANNELS * 7 + i + 1, constrain(StickMid[i],-100,100));
+    eeprom_write_int(CHANNELS * 8 + i + 1, constrain(StickMax[i],300,500));
   }
 };
 
@@ -48,17 +48,17 @@ void SaveDefault()
   eeprom_write_int(CHANNELS * 9 + 4, 3);
   
   for (int i = 0; i < CHANNELS; i++) {
-    eeprom_write_int(CHANNELS * 2 + i + 1, 1);
-    eeprom_write_int(CHANNELS * 3 + i + 1, 0);
+    //eeprom_write_int(CHANNELS * 2 + i + 1, 1);
+    //eeprom_write_int(CHANNELS * 3 + i + 1, 0);
     
-    eeprom_write_int(CHANNELS * 4 + i + 1, 0);
-    eeprom_write_int(CHANNELS * 5 + i + 1, 1000);
+    eeprom_write_int(CHANNELS * 4 + i + 1, -500);
+    eeprom_write_int(CHANNELS * 5 + i + 1,  500);
     
-    eeprom_write_int(CHANNELS * 6 + i + 1, 0);
-    eeprom_write_int(CHANNELS * 7 + i + 1, 500);
-    eeprom_write_int(CHANNELS * 8 + i + 1, 1000);
+  //  eeprom_write_int(CHANNELS * 6 + i + 1, -500);
+  //  eeprom_write_int(CHANNELS * 7 + i + 1,    0);
+  //  eeprom_write_int(CHANNELS * 8 + i + 1,  500);
     
-    eeprom_write_int(CHANNELS * 10 + i + 1, 500);
+    eeprom_write_int(CHANNELS * 10 + i + 1, 0);
   }
 }
 
