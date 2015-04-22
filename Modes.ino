@@ -69,14 +69,14 @@ void CheckcMode() {
 
 
 void CheckCalibMode() {
-  if (!digitalRead(PUSHSW1) && !digitalRead(PUSHSW2))
+  if (!digitalRead(PUSHSW1) && !digitalRead(PUSHSW2) && analogRead(SWAPin) < 250 && analogRead(SWBPin) > 750)
   {
     {
       for (int i = 0; i < (CHANNELS - 2); i++) {
         StickMin[i] = StickMid[i] = StickMax[i] = 0;
       }
     };
-    while (SWB == MODE_TWO && SWA == MODE_ONE)// (analogRead(VRB) > 950) && (analogRead(VRA) > 950)
+    while (analogRead(SWAPin) < 250 && analogRead(SWBPin) > 750)
     {
       CalibVals();
       for (int i = 0; i < (CHANNELS); i++) {

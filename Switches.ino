@@ -63,7 +63,6 @@ void KeyEvent(int Key, boolean Pos) {
       KeyActive = 1;
       break;
   }
-  // Serial.println(String(PUSHSWA) + "\t" + String(PUSHSWB));
 }
 
 void Trim() {

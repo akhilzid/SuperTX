@@ -1,5 +1,9 @@
 void StickCalc() {
-  for (int i = 0; i <  CHANNELS; i++) {
+  StickCycle ++;
+  //if (StickCycle > CHANNELS) StickCycle  = 0;
+  //int i = StickCycle;
+  for (int i = 0; i <  CHANNELS; i++) 
+  {
     switch (i) {
       case 0:
       case 1:
@@ -18,33 +22,6 @@ void StickCalc() {
   }
   //Serial.println("");
 }
-/*
-void SwitchPos() {
-  if (analogRead(SWA))
-  {
-    SWA = 1;
-  }
-  else if (!digitalRead(SWA2))
-  {
-    SWA = 2;
-  }
-  else
-  {
-    SWA = 0;
-  };
-  if (!digitalRead(SWB1))
-  {
-    SWB = 1;
-  }
-  else if (!digitalRead(SWB2))
-  {
-    SWB = 2;
-  }
-  else
-  {
-    SWB = 0;
-  };
-}*/
 
 void SwitchCalc() {
   switch (SWA) {
@@ -68,4 +45,5 @@ void SwitchCalc() {
       }
       break;
   };
+  // Serial.println(String(SWA) + "\t" + String(SWB));
 }

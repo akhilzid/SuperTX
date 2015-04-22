@@ -8,9 +8,6 @@ void setTimer() {
   TCCR1B |= (1 << CS11);  // 8 prescaler: 0,5 microseconds at 16mhz
   TIMSK1 |= (1 << OCIE1A); // enable timer compare interrupt
 
-
-  // PCICR = 0x02;         // Enable PCINT1 interrupt
-  //PCMSK1 = 0b00000111;
   sei();
 };
 

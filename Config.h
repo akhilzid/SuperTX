@@ -82,9 +82,13 @@ int SwitchPIN[TOTALSWITCHES]={AilTR0, EleTR0, ThrTR0, RudTR0, AilTR1, EleTR1, Th
 String menu_strings[10];
 String menu_Main[MAIN_MENU] = { "Mixer", "Ch Select","CH Reverse", "EP Adj", "Master Mode", "Settings"};
 String menu_Sub1[SMI_1] = { "Mix 1", "Mix 2","Mix 3", "Mix 4"};
-//String menu_strings3[CHANNELS]; // = { "CH 1 : ", "CH 2 : ","CH 3 : ", "CH 4 : ", "CH 5 : ", "CH 6 : "};
-//String menu_strings4[CHANNELS] = { "CH 1 : ", "CH 2 : ","CH 3 : ", "CH 4 : ", "CH 5 : ", "CH 6 : "};
 String channels[CHNUM] =             { "AIL", "ELE","THR", "RUD", "VRA", "VRB", "MIX1", "MIX2", "MIX3", "None"};
 
 //////////////////////////////////////////////////////////////////
+
+// Define various ADC prescaler
+const unsigned char PS_16 = (1 << ADPS2);
+const unsigned char PS_32 = (1 << ADPS2) | (1 << ADPS0);
+const unsigned char PS_64 = (1 << ADPS2) | (1 << ADPS1);
+const unsigned char PS_128 = (1 << ADPS2) | (1 << ADPS1) | (1 << ADPS0);
 
